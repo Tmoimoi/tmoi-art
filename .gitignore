@@ -25,6 +25,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# guard: Vite overlay residue (本项目用根目录 app/ + components/，不使用 src/)
+/src
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
