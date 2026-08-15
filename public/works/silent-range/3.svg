@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <radialGradient id="gsilent34" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#6b7b82" stop-opacity="0.20"/>
+      <stop offset="55%" stop-color="#0c0c0d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bgsilent34" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c0c0d"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgsilent34)"/>
+  <rect width="1200" height="800" fill="url(#gsilent34)"/>
+  <path d="M0 800 L0 440.00000000000006 L120 266 L240 318 L360 334 L480 291 L600 401 L720 252 L840 368 L960 277 L1080 318 L1200 362 L1200 800 Z" fill="#34424a" fill-opacity="0.25"/><path d="M0 800 L0 536 L120 395 L240 466 L360 413 L480 519 L600 419 L720 438 L840 412 L960 401 L1080 508 L1200 404 L1200 800 Z" fill="#6b7b82" fill-opacity="0.43"/><path d="M0 800 L0 632 L120 606 L240 524 L360 554 L480 549 L600 528 L720 570 L840 518 L960 596 L1080 523 L1200 536 L1200 800 Z" fill="#aab4b8" fill-opacity="0.61"/><path d="M0 800 L0 728 L120 618 L240 644 L360 667 L480 617 L600 702 L720 629 L840 665 L960 640 L1080 643 L1200 673 L1200 800 Z" fill="#34424a" fill-opacity="0.79"/><circle cx="864" cy="224.00000000000003" r="56.00000000000001" fill="#aab4b8" fill-opacity="0.5"/>
+</svg>

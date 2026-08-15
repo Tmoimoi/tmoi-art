@@ -1,0 +1,111 @@
+[
+  {
+    "id": "work-001",
+    "slug": "echo-realm",
+    "title": "回声之境",
+    "titleEn": "Echo Realm",
+    "year": 2025,
+    "medium": "生成艺术 / 声音装置",
+    "mediums": ["image", "video", "interactive", "sound"],
+    "size": "尺寸可变 · 实时生成",
+    "location": "线上策展空间",
+    "cover": "/works/echo-realm/cover.svg",
+    "summary": "一片由声音与光点编织的星群，当观众靠近，回声便开始流动。",
+    "images": [
+      "/works/echo-realm/1.svg",
+      "/works/echo-realm/2.svg",
+      "/works/echo-realm/3.svg"
+    ],
+    "video": "/works/echo-realm/clip.mp4",
+    "videoPoster": "/works/echo-realm/cover.svg",
+    "interactive": {
+      "engine": "threejs",
+      "variant": "echo-sphere",
+      "hint": "移动鼠标 / 拖动手指，扰动这片回声星群；点击可暂停旋转。"
+    },
+    "audio": {
+      "src": "/works/echo-realm/ambient.wav",
+      "loop": true,
+      "visualizer": true,
+      "hint": "氛围声景 · 默认关闭，点击开启。建议佩戴耳机。"
+    },
+    "description": [
+      "《回声之境》是一件以“听不见的声音”为母题的生成艺术作品。在一个近乎全黑的空间里，数万枚光点沿着球面缓慢呼吸，它们既是视觉的星群，也是声音在空间中留下的残影。",
+      "观众的存在本身即是触发条件：当指针或指尖靠近，星群被扰动、重组，原本静止的秩序让位于临时的混沌；而一旦离开，它们又会缓慢回归到初始的韵律。这种“被注视才显形”的特质，呼应了回声的本质——它需要另一个主体，才能完成一次传递。",
+      "声音部分由合成器实时生成的低频声景构成，与视觉脉动同频。它被设定为默认关闭，将开启与否的决定权完全交还给观众，这也是对“沉浸式”的一种克制：我们邀请你靠近，但不替你决定是否停留。"
+    ],
+    "notes": "三维星群使用 Three.js 的 GPU 点云实现，单帧粒子数在桌面端约 18000、移动端自动降级至 6000；声景使用 Howler.js 播放并接入 Web Audio 分析仪做频谱可视化。"
+  },
+  {
+    "id": "work-002",
+    "slug": "silent-range",
+    "title": "静默山脉",
+    "titleEn": "Silent Range",
+    "year": 2024,
+    "medium": "数字摄影 / 图像",
+    "mediums": ["image"],
+    "size": "系列 · 3 帧",
+    "location": "青海 · 祁连",
+    "cover": "/works/silent-range/cover.svg",
+    "summary": "在海拔四千米，光与风把山写成一封没有收信人的信。",
+    "images": [
+      "/works/silent-range/1.svg",
+      "/works/silent-range/2.svg",
+      "/works/silent-range/3.svg"
+    ],
+    "description": [
+      "《静默山脉》是一组关于“空”的影像练习。没有人物，没有事件，只有光线在山体上缓慢推移的轨迹。",
+      "我希望观者在这些画面前多停留几秒——当视觉信息被抽空，听觉与呼吸会自然接管，那正是山脉原本的状态。"
+    ],
+    "notes": "拍摄于冬季清晨，使用长焦压缩空间层次，后期仅做灰阶统一。"
+  },
+  {
+    "id": "work-003",
+    "slug": "tide",
+    "title": "潮汐",
+    "titleEn": "Tide",
+    "year": 2025,
+    "medium": "影像 / 声音装置",
+    "mediums": ["video", "sound"],
+    "size": "单频影像 · 6 分钟循环",
+    "location": "海岸观测站",
+    "cover": "/works/tide/cover.svg",
+    "summary": "把一整天的潮起潮落，折叠进一段可以反复进入的影像。",
+    "video": "/works/echo-realm/clip.mp4",
+    "videoPoster": "/works/tide/cover.svg",
+    "audio": {
+      "src": "/works/echo-realm/ambient.wav",
+      "loop": true,
+      "visualizer": false,
+      "hint": "影像原声 · 默认关闭，点击开启。"
+    },
+    "description": [
+      "《潮汐》记录了一处海岸在十二小时内的呼吸：水线进退、泡沫生灭、礁石在明暗之间反复更名。",
+      "影像被压缩为一个六分钟的循环，使“等待”本身成为作品的一部分——你不必赶上任何一个时刻，因为每个时刻都在回来。"
+    ],
+    "notes": "素材以延时摄影采集，配乐为同期的环境录音与合成低频的混合。"
+  },
+  {
+    "id": "work-004",
+    "slug": "pixel-garden",
+    "title": "像素花园",
+    "titleEn": "Pixel Garden",
+    "year": 2026,
+    "medium": "交互生成艺术",
+    "mediums": ["interactive"],
+    "size": "尺寸可变 · 实时生成",
+    "location": "浏览器",
+    "cover": "/works/pixel-garden/cover.svg",
+    "summary": "一片只为你生长的花田，你停留之处，光便落地生根。",
+    "interactive": {
+      "engine": "canvas",
+      "variant": "particle-garden",
+      "hint": "移动指针，粒子会朝你聚拢并绽放；静止则缓缓飘散。"
+    },
+    "description": [
+      "《像素花园》是纯粹由代码养护的一处庭院。它没有固定的样子，只响应你的轨迹：你靠近，光点便聚拢、抽枝、开花；你离开，它们又退回为安静的尘埃。",
+      "这是一件“无法被截图收藏”的作品——它的完整形态只存在于你与它的那段时间里。"
+    ],
+    "notes": "基于 Canvas2D 的力导向粒子系统，移动端以触摸坐标驱动，并降低粒子上限以保流畅。"
+  }
+]
