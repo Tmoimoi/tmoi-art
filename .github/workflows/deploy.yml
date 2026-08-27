@@ -24,6 +24,7 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
+      - run: echo "www.tmoi.cn" > out/CNAME
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
