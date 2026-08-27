@@ -1,71 +1,171 @@
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
+import { getAllWorks } from "@/lib/works";
 
-const EXHIBITIONS = [
-  { year: "2026", title: "像素花园 · 个展", place: "TMOI 线上空间" },
-  { year: "2025", title: "回声之境 · 群展", place: "上海 · 数字艺术周" },
-  { year: "2024", title: "静默山脉 · 摄影展", place: "青海 · 祁连" },
-];
+export const metadata = {
+  title: "关于",
+  description: "Tmoi · 个人陈述、教育、合作与展览。",
+};
 
-export const metadata = { title: "关于", description: "艺术家 TMOI 的简历与展览经历。" };
+// 从 works.json 聚合所有合作者
+function getAllCollaborators(): string[] {
+  const set = new Set<string>();
+  for (const w of getAllWorks()) {
+    for (const c of w.collaborators ?? []) set.add(c);
+  }
+  return Array.from(set);
+}
 
 export default function AboutPage() {
+  const collaborators = getAllCollaborators();
+  const works = getAllWorks();
+  const collabWorks = works.filter((w) => w.form === "collaboration");
+
   return (
     <div className="container-x pb-28 pt-28">
       <Reveal>
         <p className="eyebrow">关于 · About</p>
-        <h1 className="heading-serif mt-3 text-4xl sm:text-5xl">TMOI</h1>
+        <h1 className="heading-serif mt-3 text-4xl sm:text-5xl">Tmoi</h1>
+        <p className="mt-2 text-sm uppercase tracking-widest text-paper-dim">
+          Zhang Tingmei Tmoi · 张婷媚
+        </p>
       </Reveal>
 
-      <Reveal delay={0.1}>
-        <div className="mt-10 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
-          <div className="max-w-2xl space-y-5 text-base leading-relaxed text-paper/85">
-            <p>
-              TMOI 是一位以“安静”为方法的创作者，工作横跨摄影、生成艺术、
-              影像与声音装置。比起声嘶力竭的表达，更在意一件作品在沉默中
-              如何被观看、被听见。
-            </p>
-            <p>
-              近年来专注于把展厅搬进浏览器：让三维星群、可操作的粒子、
-              需要主动开启的声音，成为任何人都能在任何设备上走进的房间。
-              技术于我而言不是炫技，而是另一种“留白”的方式。
-            </p>
-            <p>
-              如果某件作品让你多停留了几秒，那便是它存在过的证据。
-            </p>
-          </div>
+      {/* 个人陈述（待你补完整） */}
+      <Reveal delay={0.05}>
+        <section className="mt-12 max-w-2xl space-y-5 text-base leading-relaxed text-paper/85">
+          <p>
+            感官与情绪是我核心的创作命题。人依靠五官感受身边环境、与人相处，从中生出各种感受。我的互动装置就像放大镜，把日常容易被忽略的细微感受放大，让观众走进来，切身体会那些共通的情绪。
+          </p>
+          <p>
+            我习惯长时间观察、内化生活经验，再转化为创作。《经纬之线》从数字概念迭代至今，在导师指点下挖掘出控制论与早期计算机美学的内涵，也突破了过往单纯停留在材质与形式实验上的框架。
+          </p>
+          <p>
+            两年创意媒体的专业训练，让我具备完整动手实作的能力，可独立实现装置的构思；但创作视野与系统化研究仍有局限。我希望借由更多尝试，让作品与观众产生更多交互，慢慢成为能独立创作的专业新媒体艺术家。
+          </p>
+        </section>
+      </Reveal>
 
-          <div>
-            <p className="eyebrow mb-4">展览经历 · Exhibitions</p>
-            <ul className="space-y-4">
-              {EXHIBITIONS.map((e) => (
-                <li
-                  key={e.title}
-                  className="flex items-baseline justify-between gap-4 border-b border-white/10 pb-4"
-                >
-                  <span className="text-sm text-paper/85">{e.title}</span>
-                  <span className="text-right text-xs text-paper-dim">
-                    {e.year}
-                    <br />
-                    {e.place}
-                  </span>
+      <div className="mt-16 grid gap-16 lg:grid-cols-[1.4fr_1fr]">
+        {/* 左：详细资料 */}
+        <div className="space-y-12">
+          {/* 教育 */}
+          <Reveal>
+            <section>
+              <p className="eyebrow">教育 · Education</p>
+              <ul className="mt-4 space-y-3 text-sm text-paper/85">
+                <li className="flex items-baseline justify-between border-b border-white/10 pb-3">
+                  <span>香港城市大学 · 创意媒体学院</span>
+                  <span className="text-xs text-paper-dim">City University of Hong Kong · School of Creative Media</span>
                 </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Reveal>
+                <li className="flex items-baseline justify-between border-b border-white/10 pb-3">
+                  <span>创意媒体硕士（MFA）</span>
+                  <span className="text-xs text-paper-dim">2024 级 · CityU HK</span>
+                </li>
+              </ul>
+            </section>
+          </Reveal>
 
-      <Reveal>
-        <div className="mt-16">
-          <Link
-            href="/contact"
-            className="rounded-full bg-accent px-7 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
-          >
-            合作与联系 →
-          </Link>
+          {/* 合作者（从 works.json 自动聚合） */}
+          {collaborators.length > 0 && (
+            <Reveal>
+              <section>
+                <p className="eyebrow">合作 · Collaborators</p>
+                <ul className="mt-4 space-y-2 text-sm text-paper/85">
+                  {collaborators.map((c) => (
+                    <li key={c} className="flex items-baseline gap-3">
+                      <span className="text-accent">·</span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-xs text-paper-dim">
+                  以上来自合作作品，可在此补充更多合作经历。
+                </p>
+              </section>
+            </Reveal>
+          )}
+
+          {/* 展览经历（占位） */}
+          <Reveal>
+            <section>
+              <p className="eyebrow">展览 · Exhibitions</p>
+              <ul className="mt-4 space-y-4">
+                <li className="flex items-baseline justify-between gap-4 border-b border-white/10 pb-4 text-paper-dim italic">
+                  <span className="text-sm">[ 待补充 · 展览名称与地点 ]</span>
+                  <span className="text-right text-xs">年份</span>
+                </li>
+                <li className="flex items-baseline justify-between gap-4 border-b border-white/10 pb-4 text-paper-dim italic">
+                  <span className="text-sm">[ 待补充 ]</span>
+                  <span className="text-right text-xs">年份</span>
+                </li>
+              </ul>
+            </section>
+          </Reveal>
         </div>
-      </Reveal>
+
+        {/* 右：合作作品卡片 + 联系 */}
+        <div className="space-y-12">
+          {collabWorks.length > 0 && (
+            <Reveal>
+              <section>
+                <p className="eyebrow">合作作品 · Selected collaboration</p>
+                <ul className="mt-4 space-y-4">
+                  {collabWorks.map((w) => (
+                    <li key={w.slug}>
+                      <Link
+                        href={`/works/${w.slug}`}
+                        className="group block rounded-2xl border border-white/10 p-5 transition-colors hover:border-accent/60"
+                      >
+                        <div className="flex items-baseline justify-between gap-3">
+                          <span className="heading-serif text-lg group-hover:text-accent">
+                            {w.title}
+                          </span>
+                          <span className="text-xs text-paper-dim">{w.year}</span>
+                        </div>
+                        <p className="mt-1 text-xs uppercase tracking-widest text-accent">
+                          {w.titleEn}
+                        </p>
+                        <p className="mt-2 line-clamp-2 text-xs text-paper-dim">
+                          {(w.collaborators ?? []).join("、")}
+                        </p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </Reveal>
+          )}
+
+          <Reveal>
+            <section>
+              <p className="eyebrow">联系 · Contact</p>
+              <ul className="mt-4 space-y-3 text-sm text-paper/85">
+                <li className="flex items-baseline gap-3">
+                  <span className="eyebrow min-w-[3rem] text-paper-dim">邮箱</span>
+                  <span className="text-paper-dim italic">[ your@email.com ]</span>
+                </li>
+                <li className="flex items-baseline gap-3">
+                  <span className="eyebrow min-w-[3rem] text-paper-dim">所在地</span>
+                  <span className="text-paper-dim italic">[ 待补充 ]</span>
+                </li>
+                <li className="flex items-baseline gap-3">
+                  <span className="eyebrow min-w-[3rem] text-paper-dim">社交</span>
+                  <span className="text-paper-dim italic">[ Instagram / 个人主页等 ]</span>
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Link
+                  href="/contact"
+                  className="rounded-full bg-accent px-7 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
+                >
+                  合作与联系 →
+                </Link>
+              </div>
+            </section>
+          </Reveal>
+        </div>
+      </div>
     </div>
   );
 }

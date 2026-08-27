@@ -27,7 +27,7 @@ export function Hero() {
           transition={{ duration: 1, ease, delay: 0.1 }}
           className="eyebrow"
         >
-          TMOI STUDIO · 线上策展空间
+          Tmoi · 个人作品
         </motion.div>
 
         <motion.h1

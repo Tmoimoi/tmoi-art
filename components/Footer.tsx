@@ -5,9 +5,9 @@ export function Footer() {
     <footer className="border-t border-white/10 bg-ink-soft">
       <div className="container-x grid gap-10 py-16 md:grid-cols-3">
         <div>
-          <div className="heading-serif text-lg tracking-widest2">TMOI</div>
+          <div className="heading-serif text-lg tracking-widest2">Tmoi</div>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-paper-dim">
-            一个以作品为中心的线上策展空间。安静、克制，把注意力留给艺术本身。
+            一个以作品为中心的线上策展空间。暗色、克制；呼吸 / 红 / 色彩 / 装置 / 档案 五个系列。
           </p>
         </div>
 
@@ -42,10 +42,10 @@ export function Footer() {
           <ul className="space-y-2 text-sm text-paper/90">
             <li>
               <a
-                href="mailto:studio@tmoi.art"
+                href="mailto:tmoi@tmoi.art"
                 className="link-underline"
               >
-                studio@tmoi.art
+                tmoi@tmoi.art
               </a>
             </li>
             <li>
@@ -72,7 +72,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container-x flex flex-col gap-2 border-t border-white/5 py-6 text-xs text-paper-dim sm:flex-row sm:items-center sm:justify-between">
-        <span>© {new Date().getFullYear()} TMOI. 保留所有权利。</span>
+        <span>© {new Date().getFullYear()} Tmoi. 保留所有权利。</span>
         <span>以 Next.js · Three.js · Howler.js 构建</span>
       </div>
     </footer>

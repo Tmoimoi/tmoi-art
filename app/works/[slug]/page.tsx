@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllWorks, getWorkBySlug } from "@/lib/works";
+import { getAllWorks, getRelatedWorks, getWorkBySlug } from "@/lib/works";
+import { FORM_LABELS, MEDIUM_LABELS, getSeries } from "@/lib/types";
 import { Reveal } from "@/components/Reveal";
 import { ImageGallery } from "@/components/ImageGallery";
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { InteractivePiece } from "@/components/InteractivePiece";
 import { SoundInteraction } from "@/components/SoundInteraction";
 import { Expandable } from "@/components/Expandable";
+import { WorkCard } from "@/components/WorkCard";
 
 export function generateStaticParams() {
   return getAllWorks().map((w) => ({ slug: w.slug }));
@@ -20,7 +22,7 @@ export function generateMetadata({
 }): Metadata {
   const work = getWorkBySlug(params.slug);
   if (!work) return { title: "未找到作品" };
-  return { title: work.title, description: work.summary };
+  return { title: `${work.title} · ${work.titleEn}`, description: work.summary };
 }
 
 function SectionLabel({ index, label }: { index: string; label: string }) {
@@ -45,6 +47,11 @@ export default function WorkDetail({
   const idx = works.findIndex((w) => w.slug === work.slug);
   const prev = works[(idx - 1 + works.length) % works.length];
   const next = works[(idx + 1) % works.length];
+  const related = getRelatedWorks(work, 3);
+
+  const seriesTags = work.series
+    .map((s) => getSeries(s))
+    .filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   let sectionNo = 0;
   const step = () => `0${++sectionNo}`;
@@ -63,9 +70,33 @@ export default function WorkDetail({
         {/* 头部 */}
         <Reveal>
           <header className="mt-8 border-b border-white/10 pb-10">
+            {/* 系列标签 */}
+            {seriesTags.length > 0 && (
+              <div className="mb-4 flex flex-wrap gap-1.5">
+                {seriesTags.map((s) => (
+                  <span
+                    key={s.id}
+                    className="rounded-full border border-white/15 px-2.5 py-1 text-[10px] uppercase tracking-widest text-paper-dim"
+                  >
+                    {s.name} · {s.nameEn}
+                  </span>
+                ))}
+                {work.form === "collaboration" && (
+                  <span className="rounded-full border border-accent/40 px-2.5 py-1 text-[10px] uppercase tracking-widest text-accent">
+                    {FORM_LABELS.collaboration}
+                  </span>
+                )}
+              </div>
+            )}
+
             <h1 className="heading-serif text-balance text-4xl leading-tight sm:text-6xl">
               {work.title}
             </h1>
+            {work.subtitle && (
+              <p className="heading-serif mt-2 text-xl text-paper/70">
+                {work.subtitle}
+              </p>
+            )}
             <p className="mt-3 text-sm uppercase tracking-widest text-accent">
               {work.titleEn} · {work.year}
             </p>
@@ -73,6 +104,22 @@ export default function WorkDetail({
               {work.summary}
             </p>
 
+            {/* 多形态提示 */}
+            {work.forms && work.forms.length > 1 && (
+              <div className="mt-6 flex flex-wrap items-center gap-2 text-sm text-paper-dim">
+                <span className="eyebrow text-paper-dim">形态</span>
+                {work.forms.map((f, i) => (
+                  <span key={f} className="flex items-center gap-2">
+                    <span className="rounded-full border border-white/15 px-2.5 py-0.5 text-paper">
+                      {f}
+                    </span>
+                    {i < work.forms!.length - 1 && <span className="text-paper-dim/60">·</span>}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* 规格表 */}
             <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-5 text-sm sm:grid-cols-4">
               <div>
                 <dt className="eyebrow">年份</dt>
@@ -92,14 +139,32 @@ export default function WorkDetail({
                   <dd className="mt-1">{work.location}</dd>
                 </div>
               )}
+              {work.collaborators && work.collaborators.length > 0 && (
+                <div className="col-span-2">
+                  <dt className="eyebrow">合作</dt>
+                  <dd className="mt-1">{work.collaborators.join("、")}</dd>
+                </div>
+              )}
+              {work.tech && work.tech.length > 0 && (
+                <div className="col-span-2">
+                  <dt className="eyebrow">技术</dt>
+                  <dd className="mt-1">{work.tech.join(" · ")}</dd>
+                </div>
+              )}
+              {work.price && (
+                <div>
+                  <dt className="eyebrow">市场参考</dt>
+                  <dd className="mt-1">{work.price}</dd>
+                </div>
+              )}
             </dl>
           </header>
         </Reveal>
 
-        {/* 文字阐述 */}
+        {/* 文字阐述 —— 私语调 */}
         <Reveal>
           <section className="py-12">
-            <SectionLabel index={step()} label="文字介绍 · Text" />
+            <SectionLabel index={step()} label="作品阐述 · Text" />
             <div className="max-w-2xl space-y-5 text-base leading-relaxed text-paper/85">
               {work.description.map((p, i) => (
                 <p key={i}>{p}</p>
@@ -152,11 +217,25 @@ export default function WorkDetail({
           </Reveal>
         )}
 
-        {/* 创作笔记 */}
+        {/* 创作笔记 —— 折叠，私语的过程记录 */}
         {work.notes && (
           <Reveal>
             <section className="py-12">
               <Expandable label="创作笔记 · Notes">{work.notes}</Expandable>
+            </section>
+          </Reveal>
+        )}
+
+        {/* 相关作品 */}
+        {related.length > 0 && (
+          <Reveal>
+            <section className="py-12">
+              <SectionLabel index={step()} label="相关作品 · Related" />
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {related.map((r) => (
+                  <WorkCard key={r.slug} work={r} />
+                ))}
+              </div>
             </section>
           </Reveal>
         )}

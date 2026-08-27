@@ -2,7 +2,7 @@ import { Reveal } from "@/components/Reveal";
 
 export const metadata = {
   title: "联系",
-  description: "与 TMOI 合作、委托或展览邀约。",
+  description: "与 Tmoi 合作、委托或展览邀约。",
 };
 
 export default function ContactPage() {
@@ -22,11 +22,11 @@ export default function ContactPage() {
       <Reveal delay={0.1}>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <a
-            href="mailto:studio@tmoi.art"
+            href="mailto:tmoi@tmoi.art"
             className="rounded-2xl border border-white/10 p-6 transition-colors hover:border-accent/60"
           >
             <p className="eyebrow">邮箱</p>
-            <p className="heading-serif mt-2 text-lg">studio@tmoi.art</p>
+            <p className="heading-serif mt-2 text-lg">tmoi@tmoi.art</p>
           </a>
           <a
             href="https://instagram.com"
@@ -35,7 +35,7 @@ export default function ContactPage() {
             className="rounded-2xl border border-white/10 p-6 transition-colors hover:border-accent/60"
           >
             <p className="eyebrow">Instagram</p>
-            <p className="heading-serif mt-2 text-lg">@tmoi.studio</p>
+            <p className="heading-serif mt-2 text-lg">@tmoi</p>
           </a>
           <a
             href="https://www.behance.net"
@@ -44,7 +44,7 @@ export default function ContactPage() {
             className="rounded-2xl border border-white/10 p-6 transition-colors hover:border-accent/60"
           >
             <p className="eyebrow">Behance</p>
-            <p className="heading-serif mt-2 text-lg">TMOI</p>
+            <p className="heading-serif mt-2 text-lg">Tmoi</p>
           </a>
         </div>
       </Reveal>

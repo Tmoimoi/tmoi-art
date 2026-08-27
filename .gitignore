@@ -31,3 +31,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# workbuddy local AI memory (not for repo)
+.workbuddy/

@@ -6,15 +6,15 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "TMOI · 个人艺术网站",
-    template: "%s · TMOI",
+    default: "Tmoi · 个人艺术网站",
+    template: "%s · Tmoi",
   },
   description:
-    "TMOI 的个人艺术作品集 —— 暗色策展风，作品本身为中心。包含图像、影像、网页互动与声音交互等多种媒介。",
-  keywords: ["艺术", "作品集", "生成艺术", "声音装置", "策展", "TMOI"],
+    "Tmoi 的个人艺术作品集 —— 暗色策展风，作品本身为中心。呼吸 / 红 / 色彩 / 装置 / 档案 五个系列。",
+  keywords: ["艺术", "作品集", "生成艺术", "声音装置", "策展", "Tmoi"],
   openGraph: {
-    title: "TMOI · 个人艺术网站",
-    description: "一个以作品为中心的线上策展空间。",
+    title: "Tmoi · 个人艺术网站",
+    description: "呼吸 / 红 / 色彩 / 装置 / 档案 五个系列的私人策展空间。",
     type: "website",
   },
 };

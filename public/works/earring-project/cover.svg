@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+    <rect width="800" height="600" fill="#5a1612"/>
+    <rect x="0" y="0" width="800" height="600" fill="url(#g1)"/>
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5a1612" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0.7"/>
+      </linearGradient>
+    </defs>
+    <!-- 嘴部 -->
+    <ellipse cx="400" cy="280" rx="50" ry="20" fill="#f5f2ec" opacity="0.6"/>
+    <path d="M 360 280 Q 400 295 440 280" fill="none" stroke="#c23a2a" stroke-width="2"/>
+    <!-- 耳环 -->
+    <g transform="translate(300 290)">
+      <line x1="0" y1="0" x2="0" y2="40" stroke="#f5f2ec" stroke-width="0.8"/>
+      <polygon points="0,40 -10,60 0,80 10,60" fill="none" stroke="#f5f2ec" stroke-width="0.8"/>
+    </g>
+    <g transform="translate(500 290)">
+      <line x1="0" y1="0" x2="0" y2="40" stroke="#f5f2ec" stroke-width="0.8"/>
+      <polygon points="0,40 -10,60 0,80 10,60" fill="none" stroke="#f5f2ec" stroke-width="0.8"/>
+    </g>
+    <text x="40" y="560" fill="#f5f2ec" font-size="14" opacity="0.5">24-Year-Old Zodiac Earring Project · 2024</text>
+  </svg>

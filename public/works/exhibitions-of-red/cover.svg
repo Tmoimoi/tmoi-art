@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+    <rect width="800" height="600" fill="#0a0a0a"/>
+    <!-- 散点屏阵 -->
+    <g fill="#a02b1f" opacity="0.8">
+      <rect x="100" y="100" width="80" height="50"/>
+      <rect x="200" y="100" width="80" height="50"/>
+      <rect x="300" y="100" width="80" height="50"/>
+      <rect x="400" y="100" width="80" height="50"/>
+      <rect x="500" y="100" width="80" height="50"/>
+      <rect x="150" y="170" width="80" height="50"/>
+      <rect x="250" y="170" width="80" height="50"/>
+      <rect x="350" y="170" width="80" height="50"/>
+      <rect x="450" y="170" width="80" height="50"/>
+      <rect x="200" y="240" width="80" height="50"/>
+      <rect x="300" y="240" width="80" height="50"/>
+      <rect x="400" y="240" width="80" height="50"/>
+    </g>
+    <g fill="#c23a2a" opacity="0.6">
+      <rect x="100" y="350" width="60" height="100"/>
+      <rect x="200" y="350" width="60" height="100"/>
+      <rect x="300" y="350" width="60" height="100"/>
+      <rect x="400" y="350" width="60" height="100"/>
+      <rect x="500" y="350" width="60" height="100"/>
+      <rect x="600" y="350" width="60" height="100"/>
+    </g>
+    <text x="40" y="560" fill="#a8a39a" font-size="14" opacity="0.6">Exhibitions of Red · 2024</text>
+  </svg>

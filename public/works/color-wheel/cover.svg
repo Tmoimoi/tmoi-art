@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+    <rect width="800" height="600" fill="#0a0a0a"/>
+    <!-- 玻璃薄膜折射：横向彩条 -->
+    <g opacity="0.6">
+      <rect x="100" y="200" width="600" height="20" fill="#e87a5a"/>
+      <rect x="100" y="230" width="600" height="20" fill="#e8b45a"/>
+      <rect x="100" y="260" width="600" height="20" fill="#cfe7d6"/>
+      <rect x="100" y="290" width="600" height="20" fill="#5a9bb8"/>
+      <rect x="100" y="320" width="600" height="20" fill="#a87b8c"/>
+      <rect x="100" y="350" width="600" height="20" fill="#8eb89b"/>
+    </g>
+    <!-- 高光 -->
+    <g opacity="0.3">
+      <ellipse cx="200" cy="285" rx="80" ry="60" fill="#f5f2ec"/>
+      <ellipse cx="500" cy="285" rx="60" ry="50" fill="#f5f2ec"/>
+    </g>
+    <text x="40" y="560" fill="#a8a39a" font-size="14" opacity="0.6">Color Wheel · 2024</text>
+  </svg>

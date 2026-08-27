@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+    <rect width="800" height="600" fill="#0a0a0a"/>
+    <!-- 激光/理发椅/眼 -->
+    <g transform="translate(400 320)">
+      <!-- 椅背 -->
+      <rect x="-30" y="-50" width="60" height="120" fill="#c08340" opacity="0.5"/>
+      <!-- 头枕 -->
+      <ellipse cx="0" cy="-80" rx="40" ry="20" fill="#c08340" opacity="0.4"/>
+      <!-- 眼睑（闭合） -->
+      <path d="M -30 -60 Q 0 -40 30 -60" fill="none" stroke="#a02b1f" stroke-width="2"/>
+      <path d="M -30 -60 Q 0 -80 30 -60" fill="none" stroke="#a02b1f" stroke-width="1" opacity="0.5"/>
+      <!-- 激光线 -->
+      <line x1="-200" y1="-60" x2="0" y2="-60" stroke="#ff5a1f" stroke-width="0.8" opacity="0.7"/>
+      <line x1="0" y1="-60" x2="200" y2="-60" stroke="#ff5a1f" stroke-width="0.8" opacity="0.7"/>
+    </g>
+    <g fill="#f5f2ec" opacity="0.2">
+      <circle cx="200" cy="200" r="2"/><circle cx="600" cy="200" r="2"/>
+    </g>
+    <text x="40" y="560" fill="#a8a39a" font-size="14" opacity="0.6">Have a Nice Day · 2024</text>
+  </svg>

@@ -1,23 +1,26 @@
 [
   {
     "id": "work-001",
-    "slug": "echo-realm",
-    "title": "回声之境",
-    "titleEn": "Echo Realm",
-    "year": 2025,
-    "medium": "生成艺术 / 声音装置",
-    "mediums": ["image", "video", "interactive", "sound"],
-    "size": "尺寸可变 · 实时生成",
-    "location": "线上策展空间",
-    "cover": "/works/echo-realm/cover.svg",
-    "summary": "一片由声音与光点编织的星群，当观众靠近，回声便开始流动。",
+    "slug": "breathe",
+    "title": "呼吸",
+    "titleEn": "Breathe",
+    "year": 2024,
+    "medium": "2D 动画 / 沉浸式装置",
+    "mediums": ["video", "interactive", "sound"],
+    "forms": ["2D 动画", "沉浸式装置"],
+    "series": ["breath"],
+    "form": "individual",
+    "size": "动画 5'30'' · 装置尺寸可变",
+    "location": "工作室 / CityU HK",
+    "cover": "/works/breathe/cover.svg",
+    "summary": "同一件作品的两种形态：一名舞者在密闭舞台上与自己的呼吸展开漫长对话；或走入绳索与织物围起的走廊，让身体成为节拍器。",
     "images": [
-      "/works/echo-realm/1.svg",
-      "/works/echo-realm/2.svg",
-      "/works/echo-realm/3.svg"
+      "/works/breathe/1.svg",
+      "/works/breathe/2.svg",
+      "/works/breathe/3.svg"
     ],
     "video": "/works/echo-realm/clip.mp4",
-    "videoPoster": "/works/echo-realm/cover.svg",
+    "videoPoster": "/works/breathe/cover.svg",
     "interactive": {
       "engine": "threejs",
       "variant": "echo-sphere",
@@ -29,83 +32,380 @@
       "visualizer": true,
       "hint": "氛围声景 · 默认关闭，点击开启。建议佩戴耳机。"
     },
+    "tech": ["Three.js（装置）", "全息投影", "实时传感器"],
     "description": [
-      "《回声之境》是一件以“听不见的声音”为母题的生成艺术作品。在一个近乎全黑的空间里，数万枚光点沿着球面缓慢呼吸，它们既是视觉的星群，也是声音在空间中留下的残影。",
-      "观众的存在本身即是触发条件：当指针或指尖靠近，星群被扰动、重组，原本静止的秩序让位于临时的混沌；而一旦离开，它们又会缓慢回归到初始的韵律。这种“被注视才显形”的特质，呼应了回声的本质——它需要另一个主体，才能完成一次传递。",
-      "声音部分由合成器实时生成的低频声景构成，与视觉脉动同频。它被设定为默认关闭，将开启与否的决定权完全交还给观众，这也是对“沉浸式”的一种克制：我们邀请你靠近，但不替你决定是否停留。"
+      "在我的梦里，旋转木马和一位持矛的骑士先后出现。它们从各自固有的状态和运动轨迹里挣脱出来，呈现一种全新的变形。",
+      "在密闭的舞台空间里，一名轮廓模糊的舞者被困于其中——她象征着一种渴望自由的拉扯，与内心深处的混乱彼此角力。镜面映射出不同的剖面，逼她面对自我审视。她试图回避，镜面却不依不饶地跟进；涡旋标志着她冲破的渴望，最后以一声呐喊收尾，镜中的自我被击碎。整个情绪的起伏与内心独白，回应着她走向自我觉察与内在自由的路。",
+      "动画以绿色为主调，象征安慰、平静与希望；红色出现时，意味着情节的转折或关键发展。声音设计则把主人公呼吸的节律与频率变化作为背景音，承托并推动叙事。",
+      "这件作品的另一种形态是沉浸式装置：用绳索、织物在走廊里围出一个封闭的感官空间，把观众呼吸的节律实时映射到全息与屏幕显示上。整个空间邀请你放慢，让呼吸成为唯一被听见的声音。"
     ],
-    "notes": "三维星群使用 Three.js 的 GPU 点云实现，单帧粒子数在桌面端约 18000、移动端自动降级至 6000；声景使用 Howler.js 播放并接入 Web Audio 分析仪做频谱可视化。"
+    "notes": "动画部分使用实拍 + 手绘融合的技法；实拍段落呈现「从外向内看」，手绘段落呈现「封闭空间内」。装置部分需要穿戴式传感器把呼吸节律转换为控制信号。",
+    "related": ["wanna-say", "weaving-strings"]
   },
   {
     "id": "work-002",
-    "slug": "silent-range",
-    "title": "静默山脉",
-    "titleEn": "Silent Range",
+    "slug": "earring-project",
+    "title": "24 岁本命年耳环",
+    "titleEn": "24-Year-Old Zodiac Earring Project",
     "year": 2024,
-    "medium": "数字摄影 / 图像",
-    "mediums": ["image"],
-    "size": "系列 · 3 帧",
-    "location": "青海 · 祁连",
-    "cover": "/works/silent-range/cover.svg",
-    "summary": "在海拔四千米，光与风把山写成一封没有收信人的信。",
+    "medium": "每日影像 / 数据动画 / 互动装置",
+    "mediums": ["video", "interactive", "image"],
+    "forms": ["年度影像", "24fps 循环", "传感器互动"],
+    "series": ["red"],
+    "form": "individual",
+    "size": "一年 354 张影像 · 24fps 循环",
+    "location": "日常佩戴 + 展览",
+    "cover": "/works/earring-project/cover.svg",
+    "summary": "在 24 岁本命年，每天佩戴耳环并拍一张以嘴部为中心的照片。一年后所有影像被压成 24fps 的循环；当观众靠近，传感器会冻结某一帧。",
     "images": [
-      "/works/silent-range/1.svg",
-      "/works/silent-range/2.svg",
-      "/works/silent-range/3.svg"
+      "/works/earring-project/1.svg",
+      "/works/earring-project/2.svg",
+      "/works/earring-project/3.svg"
     ],
-    "description": [
-      "《静默山脉》是一组关于“空”的影像练习。没有人物，没有事件，只有光线在山体上缓慢推移的轨迹。",
-      "我希望观者在这些画面前多停留几秒——当视觉信息被抽空，听觉与呼吸会自然接管，那正是山脉原本的状态。"
-    ],
-    "notes": "拍摄于冬季清晨，使用长焦压缩空间层次，后期仅做灰阶统一。"
-  },
-  {
-    "id": "work-003",
-    "slug": "tide",
-    "title": "潮汐",
-    "titleEn": "Tide",
-    "year": 2025,
-    "medium": "影像 / 声音装置",
-    "mediums": ["video", "sound"],
-    "size": "单频影像 · 6 分钟循环",
-    "location": "海岸观测站",
-    "cover": "/works/tide/cover.svg",
-    "summary": "把一整天的潮起潮落，折叠进一段可以反复进入的影像。",
     "video": "/works/echo-realm/clip.mp4",
-    "videoPoster": "/works/tide/cover.svg",
+    "videoPoster": "/works/earring-project/cover.svg",
     "audio": {
       "src": "/works/echo-realm/ambient.wav",
       "loop": true,
-      "visualizer": false,
+      "visualizer": true,
       "hint": "影像原声 · 默认关闭，点击开启。"
     },
+    "tech": ["TouchDesigner", "距离传感器", "Photoshop 后期"],
     "description": [
-      "《潮汐》记录了一处海岸在十二小时内的呼吸：水线进退、泡沫生灭、礁石在明暗之间反复更名。",
-      "影像被压缩为一个六分钟的循环，使“等待”本身成为作品的一部分——你不必赶上任何一个时刻，因为每个时刻都在回来。"
+      "中国传统里，每 12 年会遇到一次本命年。太岁临头，那一年要穿红袜子、系红绳、求个顺遂。这件作品想从这些约定俗成的红色物件里跳出来，试着把「本命年」戴在耳垂上。",
+      "决定以耳环为载体，源于一次意外：装着我多年收藏的行李被弄丢了。带着这份遗憾，我决定换一种方式继续做耳环——把它做成一个一年长的项目，每天拍一张佩戴耳环的照片。一年下来，354 张照片、若干视频与日常抓拍，连同扫描过的耳环草图、被提取出的红色像素，一起汇成了一段 24fps 的循环动画。",
+      "作品以红色为主调，材料都从日常里收集——红线、珠子、亚克力、环氧树脂……每对耳环的样子对应着我那天的状态、所用的材料、文化的引用，随机组合成当下那个瞬间的形状。",
+      "当观众靠近，传感器会冻结画面中的一帧——邀请你在某个陌生人的日常里，多停留几秒。"
     ],
-    "notes": "素材以延时摄影采集，配乐为同期的环境录音与合成低频的混合。"
+    "notes": "5 个子类：Wearing Earring（佩戴影像）/ Earring（耳环本体扫描）/ Lost Earrings（遗失的耳环）/ Red Pixels（从影像中提取的红色像素）/ Daily Image（其他日常）。",
+    "related": ["red-world", "blood-light", "exhibitions-of-red"]
+  },
+  {
+    "id": "work-003",
+    "slug": "wanna-say",
+    "title": "Wanna Say",
+    "titleEn": "Wanna Say",
+    "year": 2024,
+    "medium": "短动画 / 互动双通道影像",
+    "mediums": ["video", "interactive"],
+    "forms": ["短动画", "双通道互动投影"],
+    "series": ["red", "installation"],
+    "form": "individual",
+    "size": "动画 2' · 装置尺寸可变",
+    "location": "工作室 / 展览",
+    "cover": "/works/wanna-say/cover.svg",
+    "summary": "短动画与互动双通道影像共用一个名字：把摄影里无意识留下的剪影，做成可以被身体重新放回空间的投影。",
+    "images": [
+      "/works/wanna-say/1.svg",
+      "/works/wanna-say/2.svg",
+      "/works/wanna-say/3.svg"
+    ],
+    "video": "/works/echo-realm/clip.mp4",
+    "videoPoster": "/works/wanna-say/cover.svg",
+    "tech": ["TouchDesigner", "MediaPipe（人体姿态）", "短焦投影"],
+    "description": [
+      "短动画形态里，作品把复古胶片质感与「血光」视觉结合——摄影时无意识被手指挡住的画面，被做成了剪影与聚光、错位阴影的剧场。",
+      "互动装置形态里，左右两台短焦投影把空间分成两个画框：左边的画面把观众的身体姿态直接剪下来，投在影像里；右边的画面由动态元素实时生成红色多边形和矩形。两侧画面在空间里错位叠加，形成一个可以被你走进的剧场。",
+      "两种形态用同一个名字，是因为它们想讲同一件事：摄影里没来得及说出口的，被身体重新讲一遍。"
+    ],
+    "notes": "短动画形态从《血光》系列中的 Wanna Say 子项延伸而来。装置形态需要现场校准投影畸变。",
+    "related": ["blood-light", "breath"]
   },
   {
     "id": "work-004",
-    "slug": "pixel-garden",
-    "title": "像素花园",
-    "titleEn": "Pixel Garden",
-    "year": 2026,
-    "medium": "交互生成艺术",
-    "mediums": ["interactive"],
-    "size": "尺寸可变 · 实时生成",
-    "location": "浏览器",
-    "cover": "/works/pixel-garden/cover.svg",
-    "summary": "一片只为你生长的花田，你停留之处，光便落地生根。",
-    "interactive": {
-      "engine": "canvas",
-      "variant": "particle-garden",
-      "hint": "移动指针，粒子会朝你聚拢并绽放；静止则缓缓飘散。"
-    },
-    "description": [
-      "《像素花园》是纯粹由代码养护的一处庭院。它没有固定的样子，只响应你的轨迹：你靠近，光点便聚拢、抽枝、开花；你离开，它们又退回为安静的尘埃。",
-      "这是一件“无法被截图收藏”的作品——它的完整形态只存在于你与它的那段时间里。"
+    "slug": "red-world",
+    "title": "红世界",
+    "titleEn": "The Red World",
+    "year": 2024,
+    "medium": "绘画 + 数字拼贴",
+    "mediums": ["image"],
+    "series": ["red"],
+    "form": "individual",
+    "size": "系列约 30 张",
+    "location": "工作室",
+    "cover": "/works/red-world/cover.svg",
+    "summary": "用红铅笔画山与水，再扫描成数字拼贴——一个由大量红色片段堆叠出来的世界。",
+    "images": [
+      "/works/red-world/1.svg",
+      "/works/red-world/2.svg",
+      "/works/red-world/3.svg"
     ],
-    "notes": "基于 Canvas2D 的力导向粒子系统，移动端以触摸坐标驱动，并降低粒子上限以保流畅。"
+    "description": [
+      "做本命年耳环项目时，我习惯用红铅笔随手涂，画完发现累积出一片山水的样子。后来我索性用数字绘画工具又画了一批——每一张都像某个风景或某个瞬间的快照。",
+      "当这些图积累到几十张，碎片之间开始自己连成一片。一个由许多红色瞬间拼出来的「红世界」慢慢成型：山水、湖泊、云气、火焰……所有元素共享同一种红，但每个瞬间都独立成立。",
+      "在「红世界」里，动与静是相对的：盯着其中一张看，其他张在变化；这种对比让本来静止的画面显得很活。"
+    ],
+    "related": ["blood-light", "earring-project"]
+  },
+  {
+    "id": "work-005",
+    "slug": "blood-light",
+    "title": "血光",
+    "titleEn": "Blood Light",
+    "year": 2024,
+    "medium": "摄影 + 动画",
+    "mediums": ["image", "video"],
+    "forms": ["灵感摄影", "动画实验"],
+    "series": ["red"],
+    "form": "individual",
+    "size": "系列 · 多帧",
+    "location": "日常 / 工作室",
+    "cover": "/works/blood-light/cover.svg",
+    "summary": "一组关于红色光与人形剪影的影像实验，包含 Inspiration、Red Line、Red Phantom 三个分支；Wanna Say 短动画从这里生长出来。",
+    "images": [
+      "/works/blood-light/1.svg",
+      "/works/blood-light/2.svg",
+      "/works/blood-light/3.svg"
+    ],
+    "video": "/works/echo-realm/clip.mp4",
+    "videoPoster": "/works/blood-light/cover.svg",
+    "description": [
+      "Inspiration（灵感时刻）：拍照时手指经常无意挡住镜头，留下一片模糊的光。我用胶片模拟 App 把这些漏光保留下来，意外成了最打动自己的素材。",
+      "Red Line：同一段视频在不同的屏幕上播放，会因为机器差异出现色差或不同步。现场看时，这种不完美反而带来一种特殊的沉浸感。",
+      "Red Phantom：光从指缝穿过时，剪影意外像某种人形。我把这种侧脸阴影、彩色泼溅，做成了一段动画序列。",
+      "三个分支最后都汇到了 Wanna Say 的短动画里——它像是这个系列开口说话的那一刻。"
+    ],
+    "related": ["wanna-say", "red-world"]
+  },
+  {
+    "id": "work-006",
+    "slug": "exhibitions-of-red",
+    "title": "红之展陈",
+    "titleEn": "Exhibitions of Red",
+    "year": 2024,
+    "medium": "装置展陈记录",
+    "mediums": ["image", "interactive"],
+    "series": ["red"],
+    "form": "individual",
+    "size": "5 个空间",
+    "location": "展览现场",
+    "cover": "/works/exhibitions-of-red/cover.svg",
+    "summary": "红系列多件作品在空间里的展陈记录：屏幕矩阵、散点屏阵、多屏联动——让红色从画面蔓延到观者所在的整个房间。",
+    "images": [
+      "/works/exhibitions-of-red/1.svg",
+      "/works/exhibitions-of-red/2.svg",
+      "/works/exhibitions-of-red/3.svg"
+    ],
+    "description": [
+      "展览不是把画挂上墙就完事。",
+      "我把本命年耳环、《红世界》、《血光》、Wanna Say 这几件红系列作品重新组合进五个空间里：屏幕矩阵把同一段影像拆碎后重新拼图；散点屏阵让画面在不同步中形成一种近似的呼吸；多屏联动把红色从单一画面扩展到整个房间。",
+      "展陈本身也成了作品的一部分。"
+    ],
+    "related": ["earring-project", "red-world", "blood-light", "wanna-say"]
+  },
+  {
+    "id": "work-007",
+    "slug": "color-wheel",
+    "title": "色轮",
+    "titleEn": "Color Wheel",
+    "year": 2024,
+    "medium": "彩色玻璃薄膜装置",
+    "mediums": ["interactive"],
+    "series": ["color"],
+    "form": "individual",
+    "size": "每片 9×15cm · 自由组合",
+    "location": "工作室",
+    "cover": "/works/color-wheel/cover.svg",
+    "summary": "把 9×15cm 的彩色玻璃薄膜组合成可以折射光的空间；放置一段时间后，玻璃会自己弯曲，得以自立。",
+    "images": [
+      "/works/color-wheel/1.svg",
+      "/works/color-wheel/2.svg",
+      "/works/color-wheel/3.svg"
+    ],
+    "description": [
+      "我做色感练习时，对色彩的感受力其实很迟钝。为了补偿这个短板，我开始有意识地观察不同色块的搭配。",
+      "彩色玻璃薄膜被切到 9×15cm 的大小，组合在一起就能折射出一片小型的彩色空间。彩片很薄，存放一段时间后会自己慢慢弯曲，弯到某个程度它就能自己立起来。",
+      "我让它自己站起来。作品最自然的样子，就是被光与时间共同塑形之后的样子。"
+    ],
+    "related": ["two-trees", "moi", "color-cards"]
+  },
+  {
+    "id": "work-008",
+    "slug": "two-trees",
+    "title": "二树",
+    "titleEn": "Seems Like Two Trees",
+    "year": 2024,
+    "medium": "亚克力扫描动画",
+    "mediums": ["video", "image"],
+    "series": ["color"],
+    "form": "individual",
+    "size": "系列 · 扫描 + 后期",
+    "location": "工作室",
+    "cover": "/works/two-trees/cover.svg",
+    "summary": "把不规则的几何亚克力块扫进 Photoshop，逐帧尝试调色与效果，得出像两棵树一样的动画序列。",
+    "images": [
+      "/works/two-trees/1.svg",
+      "/works/two-trees/2.svg",
+      "/works/two-trees/3.svg"
+    ],
+    "video": "/works/echo-realm/clip.mp4",
+    "videoPoster": "/works/two-trees/cover.svg",
+    "description": [
+      "做色彩练习时，我画了一批不规则的几何形状，它们凑在一起时像两棵树的样子。",
+      "我用亚克力把这两棵树做出来，扫进 Photoshop，再逐帧尝试不同的效果与配色，最后整理成一段动画。",
+      "我更在意的是色彩搭配之间的细微差别——它们一点点推着我看同一个形状的不同表情。"
+    ],
+    "related": ["color-wheel", "moi"]
+  },
+  {
+    "id": "work-009",
+    "slug": "moi",
+    "title": "Moi",
+    "titleEn": "Moi",
+    "year": 2024,
+    "medium": "水彩重复书写",
+    "mediums": ["image"],
+    "series": ["color"],
+    "form": "individual",
+    "size": "系列 · 重复绘制",
+    "location": "工作室",
+    "cover": "/works/moi/cover.svg",
+    "summary": "用水彩笔一遍一遍写 'moi'，让重叠的笔触与错位形成红蓝交错的视觉游戏。",
+    "images": [
+      "/works/moi/1.svg",
+      "/works/moi/2.svg",
+      "/works/moi/3.svg"
+    ],
+    "description": [
+      "用水彩笔反复写 'moi'，模仿机器那种毫无知觉的重复——一遍、两遍、几十遍。",
+      "重叠的笔触累积出错位，颜色之间互相渗透。最后把每一遍草稿按顺序回放时，红与蓝的错位在画面里来回穿插，像一段很轻的视觉玩笑。",
+      "这件作品里没有「我」，只有「moi」——主语被水彩笔一遍遍磨成了墨。"
+    ],
+    "related": ["two-trees", "color-cards"]
+  },
+  {
+    "id": "work-010",
+    "slug": "color-cards",
+    "title": "色卡 3750",
+    "titleEn": "Color Cards",
+    "year": 2024,
+    "medium": "色卡矩阵 + AI 计划",
+    "mediums": ["image"],
+    "series": ["color"],
+    "form": "individual",
+    "size": "3750 张 1×1cm 卡片",
+    "location": "工作室 / AI 计划",
+    "cover": "/works/color-cards/cover.svg",
+    "summary": "用 3750 张独一无二的方色卡作为基础像素，为将来的 AI 生成提供底层色库；灵感来自静物与高脚杯。",
+    "images": [
+      "/works/color-cards/1.svg",
+      "/works/color-cards/2.svg",
+      "/works/color-cards/3.svg"
+    ],
+    "description": [
+      "我想建立一套属于自己的色板。",
+      "我用方色卡——像马赛克一样的微小色块——做了 3750 张独一无二的颜色样本，作为更大的「主题图像」的基础像素。",
+      "接下来我计划把这套色卡喂给 AI，用它来生成更大尺幅的图像。一些图案像静物、像高脚杯——它们是我做色彩练习时随手画下的草稿。",
+      "这件作品还远远没结束，它只是先停在 3750。"
+    ],
+    "related": ["color-wheel", "moi", "two-trees"]
+  },
+  {
+    "id": "work-011",
+    "slug": "have-a-nice-day",
+    "title": "Have a Nice Day",
+    "titleEn": "Have a Nice Day",
+    "subtitle": "安然片刻",
+    "year": 2026,
+    "medium": "交互装置 · 综合材料",
+    "mediums": ["interactive", "sound"],
+    "forms": ["医疗椅 + 导电扶手", "红光眼睑投影", "音频引导"],
+    "series": ["installation"],
+    "form": "individual",
+    "size": "含医疗风格座椅 + 红光投影模组",
+    "price": "独版 · RMB 37,000",
+    "location": "工作室 · 展览",
+    "cover": "/works/have-a-nice-day/cover.svg",
+    "summary": "受阳光透过树叶在紧闭的眼皮上投下红色图案所启发。参与者躺在刻意不太舒适的医疗椅上、闭上眼，扫描式红光投在眼睑上，唤起内化意象——温柔的标题下，藏着不安的结构。",
+    "images": [
+      "/works/have-a-nice-day/1.svg",
+      "/works/have-a-nice-day/2.svg",
+      "/works/have-a-nice-day/3.svg"
+    ],
+    "interactive": {
+      "engine": "threejs",
+      "variant": "echo-sphere",
+      "hint": "移动鼠标模拟闭眼时的红光扫描；点击可暂停。"
+    },
+    "audio": {
+      "src": "/works/echo-realm/ambient.wav",
+      "loop": true,
+      "visualizer": true,
+      "hint": "音频引导 · 默认关闭，点击开启。"
+    },
+    "tech": ["铝型材", "显示屏", "舵机", "电子元件", "Mac Mini 主机", "红光投影", "导电扶手", "音频引导"],
+    "description": [
+      "这是一件受阳光透过树叶、在紧闭的眼皮上投射出变幻莫测的红色图案所启发的装置作品。",
+      "它探讨残像与视觉暂留——把眼睛当作一种能暂时保留光线的记录器。参与者躺在特意设计得不太舒适的医疗风格座椅上，通过导电扶手与座椅连接，使身体与系统融为一体。",
+      "在语音引导下，参与者闭上双眼，扫描式的红光投射到他们的眼睑上，产生内化的意象。",
+      "作品唤起了温暖与平静，但那令人不安的结构和侵入性的激光运动却营造出紧张感——与看似温和的标题「Have a Nice Day」形成鲜明对比。温柔，只是表面。"
+    ],
+    "notes": "材料：综合材料，铝型材、显示屏、舵机、电子元件、Mac Mini 主机。\n创作阶段：香港城市大学创意媒体学院在读（2024 级创意媒体硕士）。\n与《经纬之线》同属「装置」系列，都邀请身体进入并参与——一件让观众躺在椅上闭眼，一件让观众触碰框体发声。",
+    "related": ["weaving-strings", "breath"]
+  },
+  {
+    "id": "work-013",
+    "slug": "weaving-strings",
+    "title": "经纬之线",
+    "titleEn": "Weaving Strings",
+    "year": 2025,
+    "medium": "沉浸式声音光影装置",
+    "mediums": ["interactive", "sound", "video"],
+    "forms": ["光纤装置", "实时生成声音", "铝型材结构"],
+    "series": ["installation"],
+    "form": "individual",
+    "size": "250 × 250 × 300 mm",
+    "location": "工作室 · 展览现场",
+    "cover": "/works/weaving-strings/cover.svg",
+    "summary": "以铝型材为骨架，光纤作经纬，LED 灯带穿行其间生成不断变幻的色彩；触碰框体，就能听见被电子处理过的人声。一件从数字概念长成实体、最终与空间共存的装置。",
+    "images": [
+      "/works/weaving-strings/1.svg",
+      "/works/weaving-strings/2.svg",
+      "/works/weaving-strings/3.svg"
+    ],
+    "video": "/works/echo-realm/clip.mp4",
+    "videoPoster": "/works/weaving-strings/cover.svg",
+    "audio": {
+      "src": "/works/echo-realm/ambient.wav",
+      "loop": true,
+      "visualizer": true,
+      "hint": "实时生成声 · 默认关闭，点击开启。建议佩戴耳机。"
+    },
+    "tech": ["3030 铝型材 + 合页错位搭建", "0.75mm 光导纤维立体编织", "2020 铝型材框架", "ESP-12 WLED 模块", "TouchDesigner（集合控制影像与声音）", "Mac Mini", "3D 打印", "音响"],
+    "description": [
+      "《经纬之线》以经纬交织产生的声响为创作起点。",
+      "作品以铝型材框架为基础，用光纤作为交织的线条，搭配 LED 灯带，营造出不断变幻的色彩效果。声音是被电子处理过的人声——当观众触碰铝型材框体，就能听见它。",
+      "它从最初的一个数字概念出发，逐渐演变为实体框架装置，最终变成一种与空间共存的沉浸式艺术形式。",
+      "我习惯长时间观察、内化处理，再把它转成作品。这件作品也是这样慢慢长出来的：从屏幕里的「编织」图像，到能被身体走进的现场。"
+    ],
+    "notes": "材料：铝型材、光导纤维、光轴、3D 打印、音响、Mac Mini、屏幕。\n技术：3030 铝型材与合页错位搭建为主体，向外延展光导纤维；2020 铝型材作框架，0.75mm 光导纤维作立体编织；ESP-12 WLED 模块控制 LED 色彩变化；TouchDesigner 集合控制小屏幕影像与声音。\n布展提示：立体造型的光导纤维很重、易压损，搬运需用车；现场安装需梯子辅助，由我亲自到场安装。\n图像生成：Weaving Strings 的图文件运行保存要确保完整再关掉，每次运行约 10 次、约 7500 张图；请在电脑无其他大内存任务时再产图（Python）。",
+    "related": ["have-a-nice-day", "breath"]
+  },
+  {
+    "id": "work-014",
+    "slug": "film-notes",
+    "title": "胶片笔记",
+    "titleEn": "Film Notes",
+    "year": 2024,
+    "medium": "胶片摄影",
+    "mediums": ["image"],
+    "forms": ["Contax Tvs", "VISTA 200", "FUJIFILM 200"],
+    "series": ["archive"],
+    "form": "individual",
+    "size": "系列 · 持续中",
+    "location": "日常",
+    "cover": "/works/film-notes/cover.svg",
+    "summary": "用 Contax Tvs、VISTA 200、FUJIFILM 200 三台胶片相机记下的日常碎片——没有主题，但有自己的呼吸。",
+    "images": [
+      "/works/film-notes/1.svg",
+      "/works/film-notes/2.svg",
+      "/works/film-notes/3.svg"
+    ],
+    "description": [
+      "三台胶片机，三种性格。",
+      "Contax Tvs 拍的是 35mm 的小机器镜头，捕捉时机的快慢都要靠手感；VISTA 200 是一次性傻瓜机，色彩偏柔，曝光宽容度大，最适合懒人；FUJIFILM 200 是更日常的选择，价格便宜，颜色清新。",
+      "这组作品没有固定主题，是胶片过期前按下的快门合集——空椅子、玻璃反光、半开的车窗——它们拼起来就是我这一两年的呼吸。"
+    ],
+    "related": []
   }
 ]

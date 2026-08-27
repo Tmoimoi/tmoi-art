@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+    <rect width="800" height="600" fill="#0c1a30"/>
+    <!-- 两棵树状抽象 -->
+    <g transform="translate(250 350)" opacity="0.7">
+      <rect x="-8" y="0" width="16" height="200" fill="#3a6b4a"/>
+      <rect x="-50" y="-20" width="100" height="30" fill="#8eb89b" transform="rotate(-15)"/>
+      <rect x="-50" y="-50" width="100" height="20" fill="#8eb89b" transform="rotate(-25)"/>
+    </g>
+    <g transform="translate(550 350)" opacity="0.7">
+      <rect x="-8" y="0" width="16" height="200" fill="#2f7a6b"/>
+      <rect x="-50" y="-20" width="100" height="30" fill="#cfe7d6" transform="rotate(15)"/>
+      <rect x="-50" y="-50" width="100" height="20" fill="#cfe7d6" transform="rotate(25)"/>
+    </g>
+    <g fill="#f5f2ec" opacity="0.3">
+      <circle cx="200" cy="200" r="3"/><circle cx="600" cy="200" r="3"/>
+      <circle cx="400" cy="150" r="2"/>
+    </g>
+    <text x="40" y="560" fill="#a8a39a" font-size="14" opacity="0.6">Seems Like Two Trees · 2024</text>
+  </svg>

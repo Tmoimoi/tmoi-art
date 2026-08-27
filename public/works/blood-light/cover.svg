@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+    <rect width="800" height="600" fill="#0a0a0a"/>
+    <!-- 红光 -->
+    <g opacity="0.5">
+      <ellipse cx="200" cy="300" rx="200" ry="60" fill="#c23a2a"/>
+      <ellipse cx="500" cy="280" rx="250" ry="50" fill="#e87a5a"/>
+      <ellipse cx="650" cy="350" rx="150" ry="40" fill="#a02b1f"/>
+    </g>
+    <!-- 剪影 -->
+    <g transform="translate(400 300)" fill="#0a0a0a" opacity="0.8">
+      <ellipse cx="-40" cy="-30" rx="20" ry="25"/>
+      <path d="M -70 0 Q -70 80 -40 100 Q -10 80 -10 0 Z"/>
+      <ellipse cx="60" cy="-30" rx="20" ry="25"/>
+      <path d="M 30 0 Q 30 80 60 100 Q 90 80 90 0 Z"/>
+    </g>
+    <text x="40" y="560" fill="#a8a39a" font-size="14" opacity="0.6">Blood Light · 2024</text>
+  </svg>
