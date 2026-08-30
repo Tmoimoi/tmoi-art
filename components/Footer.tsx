@@ -1,44 +1,50 @@
 import Link from "next/link";
+import { LangText } from "./LangText";
 
 export function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-white/10 bg-ink-soft">
+    <footer className="border-t border-black/10 bg-ink-soft">
       <div className="container-x grid gap-10 py-16 md:grid-cols-3">
         <div>
           <div className="heading-serif text-lg tracking-widest2">Tmoi</div>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-paper-dim">
-            一个以作品为中心的线上策展空间。暗色、克制；呼吸 / 红 / 色彩 / 装置 / 档案 五个系列。
+            <LangText k="footer.desc" />
           </p>
         </div>
 
         <div>
-          <div className="eyebrow mb-3">导航</div>
+          <div className="eyebrow mb-3">
+            <LangText k="footer.nav" />
+          </div>
           <ul className="space-y-2 text-sm">
             <li>
               <Link href="/" className="link-underline text-paper/90">
-                首页
+                <LangText k="footer.home" />
               </Link>
             </li>
             <li>
               <Link href="/works" className="link-underline text-paper/90">
-                作品
+                <LangText k="nav.works" />
               </Link>
             </li>
             <li>
               <Link href="/about" className="link-underline text-paper/90">
-                关于
+                <LangText k="nav.about" />
               </Link>
             </li>
             <li>
               <Link href="/contact" className="link-underline text-paper/90">
-                联系
+                <LangText k="nav.contact" />
               </Link>
             </li>
           </ul>
         </div>
 
         <div>
-          <div className="eyebrow mb-3">联系</div>
+          <div className="eyebrow mb-3">
+            <LangText k="footer.contact" />
+          </div>
           <ul className="space-y-2 text-sm text-paper/90">
             <li>
               <a
@@ -71,10 +77,18 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="container-x flex flex-col gap-2 border-t border-white/5 py-6 text-xs text-paper-dim sm:flex-row sm:items-center sm:justify-between">
-        <span>© {new Date().getFullYear()} Tmoi. 保留所有权利。</span>
-        <span>以 Next.js · Three.js · Howler.js 构建</span>
+      <div className="container-x flex flex-col gap-2 border-t border-black/5 py-6 text-xs text-paper-dim sm:flex-row sm:items-center sm:justify-between">
+        <span>
+          <LangText
+            en={`© ${year} Tmoi. All rights reserved.`}
+            zh={`© ${year} Tmoi. 保留所有权利。`}
+          />
+        </span>
+        <span>
+          <LangText k="footer.built" />
+        </span>
       </div>
     </footer>
   );
 }
+

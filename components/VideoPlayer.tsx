@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { LangText } from "./LangText";
 
 export function VideoPlayer({
   src,
@@ -27,7 +28,7 @@ export function VideoPlayer({
   };
 
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
+    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-black/10 bg-black">
       <video
         ref={videoRef}
         poster={poster}
@@ -40,7 +41,7 @@ export function VideoPlayer({
         aria-label={`${title} 视频`}
       >
         <source src={src} type="video/mp4" />
-        你的浏览器不支持内嵌视频。
+        <LangText en="Your browser does not support embedded video." zh="你的浏览器不支持内嵌视频。" />
       </video>
 
       {!playing && (
@@ -50,7 +51,7 @@ export function VideoPlayer({
           aria-label="播放视频"
           className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors hover:bg-black/40"
         >
-          <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-black/50 text-paper backdrop-blur">
+          <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-black/50 text-ink backdrop-blur">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
               <path d="M7 5l12 7-12 7V5z" />
             </svg>

@@ -5,13 +5,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // 暗色策展风配色
-        ink: "#0a0a0a", // 深空黑（底色）
-        "ink-soft": "#121212",
-        paper: "#f5f2ec", // 暖白（文字）
-        "paper-dim": "#9a958c",
-        accent: "#ff5a1f", // 霓虹橙（强调）
-        "accent-soft": "#ff7a47",
+        // 线上美术馆 / 白盒风配色（令牌语义保持，值反转为浅色）
+        ink: "#f6f3ec", // 画廊暖白（底色）
+        "ink-soft": "#efebe1", // 浅卡
+        paper: "#1b1813", // 近黑（文字）
+        "paper-dim": "#6f6a60", // 灰调
+        accent: "#b3402a", // 美术馆陶土红（强调）
+        "accent-soft": "#c5533d",
       },
       fontFamily: {
         serif: ['"Noto Serif SC"', "Georgia", "serif"],

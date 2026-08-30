@@ -1,19 +1,23 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { WorkCard } from "@/components/WorkCard";
+import { LangText } from "@/components/LangText";
+import { useLang } from "@/components/LanguageProvider";
 import {
   FORM_LABELS,
   FORM_ORDER,
   MEDIUM_LABELS,
   MEDIUM_ORDER,
   SERIES,
+  getSeries,
   type Form,
   type Medium,
   type SeriesId,
 } from "@/lib/types";
+import { MEDIUM_LABELS_EN, FORM_LABELS_EN, UI } from "@/lib/i18n";
 import { getAllWorks } from "@/lib/works";
 
 type MediumFilter = Medium | "all";
@@ -22,20 +26,11 @@ type FormFilter = Form | "all";
 
 export default function WorksPage() {
   const works = getAllWorks();
+  const { lang } = useLang();
 
   const [medium, setMedium] = useState<MediumFilter>("all");
   const [series, setSeries] = useState<SeriesFilter>("all");
   const [form, setForm] = useState<FormFilter>("all");
-
-  const counts = useMemo(() => {
-    const m: Record<string, number> = { all: works.length };
-    for (const x of MEDIUM_ORDER) m[x] = works.filter((w) => w.mediums.includes(x)).length;
-    const s: Record<string, number> = { all: works.length };
-    for (const x of SERIES) s[x.id] = works.filter((w) => w.series.includes(x.id)).length;
-    const f: Record<string, number> = { all: works.length };
-    for (const x of FORM_ORDER) f[x] = works.filter((w) => w.form === x).length;
-    return { m, s, f };
-  }, [works]);
 
   const filtered = useMemo(
     () =>
@@ -48,80 +43,185 @@ export default function WorksPage() {
     [works, medium, series, form]
   );
 
-  // 当用户按了系列筛选时，关闭"按系列分组"
   const groupBySeries = series === "all";
 
   const grouped = useMemo(() => {
     if (!groupBySeries) {
-      return [{ id: "all" as const, name: "作品", nameEn: "Works", blurb: undefined as string | undefined, works: filtered }];
+      const s = getSeries(series);
+      if (!s) return [];
+      return [
+        {
+          id: s.id,
+          name: s.name,
+          nameEn: s.nameEn,
+          blurb: s.blurb,
+          blurbEn: s.blurbEn,
+          works: filtered,
+        },
+      ];
     }
     return SERIES.map((s) => ({
       id: s.id as SeriesId,
       name: s.name,
       nameEn: s.nameEn,
       blurb: s.blurb,
+      blurbEn: s.blurbEn,
       works: filtered.filter((w) => w.series.includes(s.id)),
     })).filter((g) => g.works.length > 0);
-  }, [filtered, groupBySeries]);
+  }, [filtered, groupBySeries, series]);
+
+  // 楼层导览：每个系列 = 一个展厅，取首件作预览
+  const halls = SERIES.map((s) => {
+    const inSeries = works.filter((w) => w.series.includes(s.id));
+    return {
+      ...s,
+      count: inSeries.length,
+      cover: inSeries[0]?.cover,
+    };
+  });
 
   return (
     <div className="container-x pb-28 pt-28">
-      <header className="mb-10">
-        <p className="eyebrow">作品索引 · Index</p>
-        <h1 className="heading-serif mt-3 text-4xl sm:text-5xl">作品</h1>
+      <header className="mb-12">
+        <p className="eyebrow">
+          <LangText k="works.eyebrow" />
+        </p>
+        <h1 className="heading-serif mt-3 text-4xl sm:text-5xl">
+          <LangText k="works.title" />
+        </h1>
         <p className="mt-4 max-w-xl text-paper-dim">
-          按媒介 / 系列 / 形态三个维度交叉筛选。共 {works.length} 件作品，按 5 个系列组织。
+          <LangText k="works.intro" />
         </p>
       </header>
 
-      {/* 三个筛选轴 */}
-      <div className="mb-10 space-y-3">
+      {/* 楼层导览 */}
+      <section className="mb-16">
+        <p className="eyebrow mb-4">
+          <LangText k="works.floorplan" />
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {halls.map((h) => {
+            const active = series === h.id;
+            return (
+              <button
+                key={h.id}
+                type="button"
+                onClick={() => setSeries(active ? "all" : h.id)}
+                aria-pressed={active}
+                className={`group flex flex-col overflow-hidden rounded-xl border bg-ink text-left transition-colors ${
+                  active
+                    ? "border-accent"
+                    : "border-black/10 hover:border-accent/50"
+                }`}
+              >
+                <div className="relative aspect-[16/9] overflow-hidden bg-black">
+                  {h.cover && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={h.cover}
+                      alt={lang === "en" ? h.nameEn : h.name}
+                      className="absolute inset-0 h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                </div>
+                <div className="p-4">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h3 className="heading-serif text-lg">
+                      {lang === "en" ? h.nameEn : h.name}
+                    </h3>
+                  </div>
+                  {h.blurb && (
+                    <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-paper-dim">
+                      {lang === "en" ? h.blurbEn ?? h.blurb : h.blurb}
+                    </p>
+                  )}
+                  <p className="mt-2 text-[10px] uppercase tracking-widest text-accent">
+                    {(UI["works.hallCount"][lang] as string).replace(
+                      "{n}",
+                      String(h.count)
+                    )}
+                  </p>
+                </div>
+              </button>
+            );
+          })}
+
+          {/* 全部作品 */}
+          <button
+            type="button"
+            onClick={() => setSeries("all")}
+            aria-pressed={series === "all"}
+            className={`flex min-h-[9rem] flex-col justify-center rounded-xl border p-5 text-left transition-colors ${
+              series === "all"
+                ? "border-accent bg-accent/5"
+                : "border-dashed border-black/20 hover:border-accent/50"
+            }`}
+          >
+            <h3 className="heading-serif text-lg">
+              <LangText k="works.allHall" />
+            </h3>
+            <p className="mt-1 text-[10px] uppercase tracking-widest text-accent">
+              {(UI["works.hallCount"][lang] as string).replace(
+                "{n}",
+                String(works.length)
+              )}
+            </p>
+          </button>
+        </div>
+      </section>
+
+      {/* 两个筛选轴（媒介 / 形态） */}
+      <div className="mb-12 space-y-3">
         <FilterRow
-          label="媒介"
+          label={<LangText k="works.filter.medium" />}
           current={medium}
           onChange={setMedium}
           options={[
-            { key: "all", label: "全部", count: counts.m.all },
-            ...MEDIUM_ORDER.map((m) => ({ key: m, label: MEDIUM_LABELS[m], count: counts.m[m] })),
+            { key: "all", label: UI["works.all"][lang], count: works.length },
+            ...MEDIUM_ORDER.map((m) => ({
+              key: m,
+              label: lang === "en" ? MEDIUM_LABELS_EN[m] : MEDIUM_LABELS[m],
+              count: works.filter((w) => w.mediums.includes(m)).length,
+            })),
           ]}
         />
         <FilterRow
-          label="系列"
-          current={series}
-          onChange={setSeries}
-          options={[
-            { key: "all", label: "全部", count: counts.s.all },
-            ...SERIES.map((s) => ({ key: s.id, label: s.name, count: counts.s[s.id] })),
-          ]}
-        />
-        <FilterRow
-          label="形态"
+          label={<LangText k="works.filter.form" />}
           current={form}
           onChange={setForm}
           options={[
-            { key: "all", label: "全部", count: counts.f.all },
-            ...FORM_ORDER.map((f) => ({ key: f, label: FORM_LABELS[f], count: counts.f[f] })),
+            { key: "all", label: UI["works.all"][lang], count: works.length },
+            ...FORM_ORDER.map((f) => ({
+              key: f,
+              label: lang === "en" ? FORM_LABELS_EN[f] : FORM_LABELS[f],
+              count: works.filter((w) => w.form === f).length,
+            })),
           ]}
         />
       </div>
 
-      {/* 网格 / 分组 */}
+      {/* 展墙：每个系列 = 一面挂满作品的墙 */}
       {grouped.map((g) => (
-        <section key={g.id} className="mb-16">
-          {groupBySeries && (
-            <div className="mb-6 border-b border-white/10 pb-3">
-              <h2 className="heading-serif text-2xl">
-                {g.name}{" "}
-                <span className="text-sm uppercase tracking-widest text-paper-dim">
-                  {g.nameEn}
-                </span>
+        <section key={g.id} className="mb-20 scroll-mt-28">
+          <div className="mb-8 border-b border-black/10 pb-4">
+            <div className="flex items-baseline justify-between gap-3">
+              <h2 className="heading-serif text-3xl">
+                {lang === "en" ? g.nameEn : g.name}
               </h2>
-              {g.blurb && (
-                <p className="mt-1 text-sm text-paper-dim">{g.blurb}</p>
-              )}
+              <span className="eyebrow">
+                {(UI["works.hallCount"][lang] as string).replace(
+                  "{n}",
+                  String(g.works.length)
+                )}
+              </span>
             </div>
-          )}
-          <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {g.blurb && (
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-paper-dim">
+                {lang === "en" ? g.blurbEn ?? g.blurb : g.blurb}
+              </p>
+            )}
+          </div>
+          <motion.div layout className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
               {g.works.map((work) => (
                 <motion.div
@@ -141,12 +241,14 @@ export default function WorksPage() {
       ))}
 
       {filtered.length === 0 && (
-        <p className="mt-16 text-center text-paper-dim">该组合下暂无作品。</p>
+        <p className="mt-16 text-center text-paper-dim">
+          <LangText k="works.empty" />
+        </p>
       )}
 
       <div className="mt-16">
         <Link href="/" className="link-underline text-sm text-paper/80">
-          ← 返回首页
+          ← <LangText k="works.back" />
         </Link>
       </div>
     </div>
@@ -159,7 +261,7 @@ function FilterRow<T extends string>({
   onChange,
   options,
 }: {
-  label: string;
+  label: ReactNode;
   current: T;
   onChange: (v: T) => void;
   options: { key: T; label: string; count: number }[];

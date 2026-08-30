@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { LangText } from "./LangText";
 
 const HeroBackground = dynamic(() => import("./HeroBackground"), {
   ssr: false,
@@ -16,8 +17,8 @@ export function Hero() {
       {/* 生成式视觉背景 */}
       <HeroBackground />
 
-      {/* 暗化 + 颗粒，保证文字可读 */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/30 to-ink" />
+      {/* 极轻的底色过渡 + 颗粒，保留美术馆式留白 */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/[0.05]" />
       <div className="pointer-events-none absolute inset-0 grain-overlay opacity-[0.06] animate-grain" />
 
       <div className="container-x relative z-10">
@@ -27,7 +28,7 @@ export function Hero() {
           transition={{ duration: 1, ease, delay: 0.1 }}
           className="eyebrow"
         >
-          Tmoi · 个人作品
+          <LangText k="hero.eyebrow" />
         </motion.div>
 
         <motion.h1
@@ -36,9 +37,7 @@ export function Hero() {
           transition={{ duration: 1.1, ease, delay: 0.25 }}
           className="heading-serif mt-5 max-w-4xl text-balance text-4xl leading-[1.1] sm:text-6xl lg:text-7xl"
         >
-          把注意力，
-          <br />
-          留給作品本身。
+          <LangText k="hero.title" />
         </motion.h1>
 
         <motion.p
@@ -47,8 +46,7 @@ export function Hero() {
           transition={{ duration: 1, ease, delay: 0.5 }}
           className="mt-7 max-w-xl text-base leading-relaxed text-paper/80 sm:text-lg"
         >
-          这里收录影像、生成艺术、网页互动与声音装置。
-          暗色、克制、有呼吸感——像走进一间没有解说词的展厅。
+          <LangText k="hero.sub" />
         </motion.p>
 
         <motion.div
@@ -61,10 +59,10 @@ export function Hero() {
             href="/works"
             className="rounded-full bg-accent px-7 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
           >
-            进入作品
+            <LangText k="hero.cta1" />
           </Link>
           <Link href="/about" className="btn-ghost">
-            关于艺术家
+            <LangText k="hero.cta2" />
           </Link>
         </motion.div>
       </div>
@@ -77,7 +75,7 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-[10px] uppercase tracking-widest2 text-paper-dim"
       >
         <span className="flex flex-col items-center gap-2">
-          向下滚动
+          <LangText k="hero.scroll" />
           <span className="block h-8 w-px bg-gradient-to-b from-paper-dim to-transparent" />
         </span>
       </motion.div>

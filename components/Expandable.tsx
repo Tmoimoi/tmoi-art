@@ -7,12 +7,12 @@ export function Expandable({
   label,
   children,
 }: {
-  label: string;
+  label: React.ReactNode;
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-2xl border border-white/10 bg-ink-soft">
+    <div className="rounded-2xl border border-black/10 bg-ink-soft">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}

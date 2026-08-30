@@ -47,7 +47,7 @@ export function SoundToggle() {
         className={`flex h-9 w-9 items-center justify-center rounded-full border transition-colors ${
           enabled
             ? "border-accent text-accent"
-            : "border-white/15 text-paper-dim hover:text-paper"
+            : "border-black/15 text-paper-dim hover:text-paper"
         }`}
       >
         {enabled ? <SpeakerOn /> : <SpeakerOff />}
@@ -63,7 +63,7 @@ export function SoundToggle() {
         onChange={(e) => setVolume(parseFloat(e.target.value))}
         aria-label="音量"
         disabled={!enabled}
-        className="h-1 w-16 cursor-pointer appearance-none rounded-full bg-white/20 accent-accent disabled:opacity-30"
+        className="h-1 w-16 cursor-pointer appearance-none rounded-full bg-black/20 accent-accent disabled:opacity-30"
       />
     </div>
   );

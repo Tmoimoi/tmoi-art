@@ -32,15 +32,16 @@ export interface Series {
   id: SeriesId;
   name: string; // 中文名
   nameEn: string; // 英文名
-  blurb?: string; // 一句话系列说明
+  blurb?: string; // 一句话系列说明（中文）
+  blurbEn?: string; // 英文系列说明
 }
 
 export const SERIES: Series[] = [
-  { id: "breath", name: "呼吸", nameEn: "Breath", blurb: "关于呼吸、梦境与感知阈限的母题。" },
-  { id: "red", name: "红", nameEn: "Red", blurb: "本命年、红色记忆、影像与装置中反复出现的那抹红。" },
-  { id: "color", name: "色彩", nameEn: "Color", blurb: "从色感到色卡，把色彩当作可被训练、可被生成的事物。" },
-  { id: "installation", name: "装置", nameEn: "Installation", blurb: "在物理空间里邀请身体参与的现场作品。" },
-  { id: "archive", name: "档案", nameEn: "Archive", blurb: "日常拍摄与材料积累，作为可被回看的草稿本。" },
+  { id: "breath", name: "呼吸", nameEn: "Breath", blurb: "关于呼吸、梦境与感知阈限的母题。", blurbEn: "Motifs of breath, dreams and the threshold of perception." },
+  { id: "red", name: "红", nameEn: "Red", blurb: "本命年、红色记忆、影像与装置中反复出现的那抹红。", blurbEn: "Zodiac year, red memory — that recurring red across image and installation." },
+  { id: "color", name: "色彩", nameEn: "Color", blurb: "从色感到色卡，把色彩当作可被训练、可被生成的事物。", blurbEn: "From colour sense to colour cards: treating colour as something trainable and generative." },
+  { id: "installation", name: "装置", nameEn: "Installation", blurb: "在物理空间里邀请身体参与的现场作品。", blurbEn: "Site works that invite the body to participate in physical space." },
+  { id: "archive", name: "档案", nameEn: "Archive", blurb: "日常拍摄与材料积累，作为可被回看的草稿本。", blurbEn: "Everyday shooting and material accumulation, kept as a reviewable sketchbook." },
 ];
 
 export function getSeries(id: SeriesId): Series | undefined {
@@ -69,13 +70,16 @@ export interface Work {
   title: string;
   titleEn: string;
   subtitle?: string; // 中文别名 / 副标题（如「安然片刻」）
+  subtitleEn?: string; // 英文副标题
   year: number;
   // 人类可读的媒介说明，例如"生成艺术 / 沉浸式装置"
   medium: string;
+  mediumEn?: string; // 英文媒介说明
   // 用于列表筛选的媒介维度
   mediums: Medium[];
   // 同一作品可同时存在的多种形态（如：动画 + 沉浸式装置）
   forms?: string[];
+  formsEn?: string[]; // 英文形态说明
   // 所属系列（可多选）
   series: SeriesId[];
   // 个人 / 合作
@@ -85,6 +89,7 @@ export interface Work {
   location?: string;
   cover: string;
   summary: string; // 一句话简介（卡片/首页用）
+  summaryEn?: string; // 英文一句话简介
   images?: string[]; // 图片画廊
   video?: string; // 视频源
   videoPoster?: string; // 视频封面
@@ -94,7 +99,10 @@ export interface Work {
   collaborators?: string[];
   // 技术栈（如适用）
   tech?: string[];
+  techEn?: string[]; // 英文技术栈
   description: string[]; // 作品阐述（多段 · 私语调）
+  descriptionEn?: string[]; // 英文作品阐述
   notes?: string; // 创作笔记 / 过程记录
+  notesEn?: string; // 英文创作笔记
   related?: string[]; // 相关作品 slug
 }

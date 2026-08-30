@@ -162,14 +162,14 @@ export default function CanvasSketch({
         style={{ background: "#080808" }}
       />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
-        <p className="max-w-[80%] text-xs leading-relaxed text-paper-dim">
+        <p className="max-w-[80%] text-xs leading-relaxed text-ink/70">
           {hint}
         </p>
         <button
           type="button"
           onClick={() => setPlaying((v) => !v)}
           aria-label={playing ? "暂停互动" : "继续互动"}
-          className="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-paper backdrop-blur transition-colors hover:border-accent hover:text-accent"
+          className="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-ink backdrop-blur transition-colors hover:border-accent hover:text-accent"
         >
           {playing ? (
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

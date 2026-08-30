@@ -30,13 +30,13 @@ function DriftField() {
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.02}
-        color="#ff7a47"
+        size={0.025}
+        color="#b3402a"
         sizeAttenuation
         transparent
-        opacity={0.55}
+        opacity={0.42}
         depthWrite={false}
-        blending={THREE.AdditiveBlending}
+        blending={THREE.NormalBlending}
       />
     </points>
   );

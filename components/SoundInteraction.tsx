@@ -3,6 +3,7 @@
 import { Howl, Howler } from "howler";
 import { useEffect, useRef, useState } from "react";
 import { useSound } from "./SoundProvider";
+import { LangText } from "./LangText";
 import type { AudioConfig } from "@/lib/types";
 
 // 共享一个分析仪：把 Howler 主增益接到 AnalyserNode，再回连到输出，
@@ -112,10 +113,12 @@ export function SoundInteraction({ config }: { config: AudioConfig }) {
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-ink-soft p-5">
+    <div className="rounded-2xl border border-black/10 bg-ink-soft p-5">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div>
-          <div className="eyebrow">声音 · Sound</div>
+          <div className="eyebrow">
+            <LangText en="Sound" zh="声音" />
+          </div>
           {config.hint && (
             <p className="mt-1 text-xs text-paper-dim">{config.hint}</p>
           )}
@@ -128,7 +131,7 @@ export function SoundInteraction({ config }: { config: AudioConfig }) {
           className={`flex h-12 w-12 items-center justify-center rounded-full border transition-colors ${
             playing
               ? "border-accent text-accent"
-              : "border-white/20 text-paper hover:border-accent hover:text-accent"
+              : "border-black/20 text-paper hover:border-accent hover:text-accent"
           }`}
         >
           {playing ? (
@@ -155,8 +158,8 @@ export function SoundInteraction({ config }: { config: AudioConfig }) {
       )}
 
       <p className="mt-3 text-[11px] text-paper-dim">
-        {playing ? "正在播放" : "已暂停"}
-        {!enabled && " · 全局声音开关处于关闭状态"}
+        {playing ? <LangText en="Playing" zh="正在播放" /> : <LangText en="Paused" zh="已暂停" />}
+        {!enabled && <LangText en=" · Global sound is off" zh=" · 全局声音开关处于关闭状态" />}
       </p>
     </div>
   );

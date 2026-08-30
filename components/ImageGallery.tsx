@@ -45,7 +45,7 @@ export function ImageGallery({
             key={src}
             type="button"
             onClick={() => setIndex(i)}
-            className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 bg-ink-soft"
+            className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-black/10 bg-ink-soft"
             aria-label={`放大查看第 ${i + 1} 张图片`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -77,7 +77,7 @@ export function ImageGallery({
               type="button"
               onClick={close}
               aria-label="关闭"
-              className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-paper hover:border-accent hover:text-accent"
+              className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-ink hover:border-accent hover:text-accent"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path
@@ -96,7 +96,7 @@ export function ImageGallery({
                 prev();
               }}
               aria-label="上一张"
-              className="absolute left-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-paper hover:border-accent hover:text-accent sm:left-6"
+              className="absolute left-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-ink hover:border-accent hover:text-accent sm:left-6"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M15 5l-7 7 7 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -122,14 +122,14 @@ export function ImageGallery({
                 next();
               }}
               aria-label="下一张"
-              className="absolute right-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-paper hover:border-accent hover:text-accent sm:right-6"
+              className="absolute right-3 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-ink hover:border-accent hover:text-accent sm:right-6"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
 
-            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs text-paper-dim">
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-xs text-ink/70">
               {index + 1} / {images.length}
             </div>
           </motion.div>

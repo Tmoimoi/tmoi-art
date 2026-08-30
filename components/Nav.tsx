@@ -5,15 +5,19 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { SoundToggle } from "./SoundToggle";
+import { LanguageToggle } from "./LanguageToggle";
+import { useLang } from "./LanguageProvider";
+import { UI } from "@/lib/i18n";
 
 const LINKS = [
-  { href: "/works", label: "作品", en: "Works" },
-  { href: "/about", label: "关于", en: "About" },
-  { href: "/contact", label: "联系", en: "Contact" },
+  { href: "/works", key: "nav.works" },
+  { href: "/about", key: "nav.about" },
+  { href: "/contact", key: "nav.contact" },
 ];
 
 export function Nav() {
   const pathname = usePathname();
+  const { lang } = useLang();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -31,7 +35,7 @@ export function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
         scrolled
-          ? "border-b border-white/10 bg-ink/80 backdrop-blur-md"
+          ? "border-b border-black/10 bg-ink/80 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
@@ -44,7 +48,7 @@ export function Nav() {
         </Link>
 
         {/* 桌面端导航 */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {LINKS.map((l) => {
             const active = pathname.startsWith(l.href);
             return (
@@ -55,18 +59,17 @@ export function Nav() {
                   active ? "text-accent" : "text-paper/90"
                 }`}
               >
-                {l.label}
-                <span className="ml-1 text-[10px] uppercase tracking-widest text-paper-dim">
-                  {l.en}
-                </span>
+                {UI[l.key][lang]}
               </Link>
             );
           })}
+          <LanguageToggle />
           <SoundToggle />
         </div>
 
-        {/* 移动端：声音开关 + 汉堡 */}
+        {/* 移动端：语言 + 声音 + 汉堡 */}
         <div className="flex items-center gap-3 md:hidden">
+          <LanguageToggle />
           <SoundToggle />
           <button
             type="button"
@@ -102,7 +105,7 @@ export function Nav() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-white/10 bg-ink/95 backdrop-blur-md md:hidden"
+            className="overflow-hidden border-t border-black/10 bg-ink/95 backdrop-blur-md md:hidden"
           >
             <div className="container-x flex flex-col gap-1 py-4">
               {LINKS.map((l) => (
@@ -111,10 +114,7 @@ export function Nav() {
                   href={l.href}
                   className="flex items-baseline justify-between py-3 text-base text-paper/90"
                 >
-                  <span>{l.label}</span>
-                  <span className="text-[10px] uppercase tracking-widest text-paper-dim">
-                    {l.en}
-                  </span>
+                  <span>{UI[l.key][lang]}</span>
                 </Link>
               ))}
             </div>
