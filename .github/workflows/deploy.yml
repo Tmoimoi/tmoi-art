@@ -22,9 +22,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run build
-      - run: echo "www.tmoi.cn" > out/CNAME
+      - name: Install dependencies
+        # 使用 npm install 而非 npm ci：本项目是一次性静态站点部署，无需严格 lockfile 同步；
+        # 安装的是最少 devDep（next/react/typescript/vercel CLI 等），体积小、几分钟完成。
+        run: npm install --no-audit --no-fund
+      - name: Build (Next.js static export → out/)
+        run: npm run build
+      - name: Write CNAME for custom domain (www.tmoi.cn)
+        run: echo "www.tmoi.cn" > out/CNAME
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
