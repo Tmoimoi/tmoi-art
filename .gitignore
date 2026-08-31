@@ -32,5 +32,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# python
+__pycache__/
+*.py[cod]
+
 # workbuddy local AI memory (not for repo)
 .workbuddy/
