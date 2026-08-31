@@ -31,7 +31,7 @@ function DriftField() {
       </bufferGeometry>
       <pointsMaterial
         size={0.025}
-        color="#b3402a"
+        color="#4a6b4a"
         sizeAttenuation
         transparent
         opacity={0.42}

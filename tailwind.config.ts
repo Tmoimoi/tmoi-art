@@ -10,8 +10,8 @@ const config: Config = {
         "ink-soft": "#efebe1", // 浅卡
         paper: "#1b1813", // 近黑（文字）
         "paper-dim": "#6f6a60", // 灰调
-        accent: "#b3402a", // 美术馆陶土红（强调）
-        "accent-soft": "#c5533d",
+        accent: "#4A6B4A", // 苔藓绿 Moss（强调）
+        "accent-soft": "#98B898",
       },
       fontFamily: {
         serif: ['"Noto Serif SC"', "Georgia", "serif"],
