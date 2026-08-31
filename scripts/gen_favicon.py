@@ -40,7 +40,7 @@ M_UNIT = [
     (300.0, 210.0),  # E 右下
 ]
 M_UNIT_HALF = 30.0
-M_WIDTH_RATIO = 0.55   # M 外缘总宽占画布宽度的比例（四周留白 ≈ 22.5%）
+M_WIDTH_RATIO = 0.77   # M 外缘总宽占画布宽度的比例（四周留白 ≈ 11.5%）
 
 SS = 4                    # PNG 超采样倍数
 PNG_SIZE = 180
@@ -151,8 +151,21 @@ def build_png(path, size=PNG_SIZE):
 
 
 def main():
-    svg_path = os.path.join(APP_DIR, "icon.svg")
-    png_path = os.path.join(APP_DIR, "apple-icon.png")
+    import argparse
+
+    global M_WIDTH_RATIO
+
+    ap = argparse.ArgumentParser(description="生成 Tmoi favicon（苔藓绿方块 + 白色 M）")
+    ap.add_argument("--ratio", type=float, default=None,
+                    help=f"覆盖 M_WIDTH_RATIO（默认 {M_WIDTH_RATIO}）")
+    ap.add_argument("--svg", default=os.path.join(APP_DIR, "icon.svg"))
+    ap.add_argument("--png", default=os.path.join(APP_DIR, "apple-icon.png"))
+    args = ap.parse_args()
+
+    if args.ratio is not None:
+        M_WIDTH_RATIO = args.ratio
+
+    svg_path, png_path = args.svg, args.png
     with open(svg_path, "w", encoding="utf-8") as f:
         f.write(build_svg())
     build_png(png_path)
