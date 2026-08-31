@@ -29,28 +29,46 @@ EDGE_INSET = 18.0         # 内侧描边内缩
 EDGE_W = 14.0
 EDGE_RX = OUTER_RX - EDGE_INSET
 
-# M 的中心线折点（自底左起：上→中谷→上→右下），stroke 半宽 24（线宽 48）
-M_HALF = 24.0
-M_PTS = [
-    (96.0, 355.0),   # A 左下
-    (96.0, 143.0),   # B 左上
-    (256.0, 289.0),  # C 中谷
-    (416.0, 143.0),  # D 右上
-    (416.0, 355.0),  # E 右下
+# ---------- 白色 M ----------
+# 抽象坐标系里的几何 M（宽 300 × 高 210，笔画半宽 30），
+# 之后统一按 M_WIDTH_RATIO 缩放到画布并居中，改这两个数即可调整大小/粗细。
+M_UNIT = [
+    (0.0, 210.0),    # A 左下
+    (0.0, 0.0),      # B 左上
+    (150.0, 146.0),  # C 中谷
+    (300.0, 0.0),    # D 右上
+    (300.0, 210.0),  # E 右下
 ]
+M_UNIT_HALF = 30.0
+M_WIDTH_RATIO = 0.55   # M 外缘总宽占画布宽度的比例（四周留白 ≈ 22.5%）
 
 SS = 4                    # PNG 超采样倍数
 PNG_SIZE = 180
 
 
+def m_geometry(size=512.0):
+    """把抽象 M 等比缩放并居中到 size×size 画布，返回 (折线点, 笔画半宽, bbox)。"""
+    outline = offset_outline(M_UNIT, M_UNIT_HALF)
+    xs = [p[0] for p in outline]
+    ys = [p[1] for p in outline]
+    w, h = max(xs) - min(xs), max(ys) - min(ys)
+    k = (size * M_WIDTH_RATIO) / w
+    cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
+    c = size / 2
+    pts = [((x - cx) * k + c, (y - cy) * k + c) for x, y in M_UNIT]
+    bbox = (c - w * k / 2, c - h * k / 2, c + w * k / 2, c + h * k / 2)
+    return pts, M_UNIT_HALF * k, bbox
+
+
 def build_svg() -> str:
-    d = "M " + " L ".join(f"{x:g} {y:g}" for x, y in M_PTS)
+    pts, half, _ = m_geometry()
+    d = "M " + " L ".join(f"{x:.1f} {y:.1f}" for x, y in pts)
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <!-- Tmoi 线上美术馆 favicon：苔藓绿圆角方形 + 白色 M（Museum），内侧细描边保证小尺寸边界感 -->
   <rect width="512" height="512" rx="{OUTER_RX:g}" fill="{MOSS}"/>
   <rect x="{EDGE_INSET:g}" y="{EDGE_INSET:g}" width="{512 - 2 * EDGE_INSET:g}" height="{512 - 2 * EDGE_INSET:g}" rx="{EDGE_RX:g}"
         fill="none" stroke="{MOSS_EDGE}" stroke-opacity="{EDGE_OPACITY}" stroke-width="{EDGE_W:g}"/>
-  <path d="{d}" fill="none" stroke="{WHITE}" stroke-width="{2 * M_HALF:g}"
+  <path d="{d}" fill="none" stroke="{WHITE}" stroke-width="{2 * half:.1f}"
         stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"/>
 </svg>
 """
@@ -124,7 +142,8 @@ def build_png(path, size=PNG_SIZE):
     )
 
     # 白色 M
-    poly = [(sc(x), sc(y)) for x, y in offset_outline(M_PTS, M_HALF)]
+    pts, half, _ = m_geometry()
+    poly = [(sc(x), sc(y)) for x, y in offset_outline(pts, half)]
     dr.polygon(poly, fill=WHITE)
 
     img.resize((size, size), Image.LANCZOS).save(path, "PNG")
@@ -137,8 +156,15 @@ def main():
     with open(svg_path, "w", encoding="utf-8") as f:
         f.write(build_svg())
     build_png(png_path)
-    print("wrote", svg_path)
-    print("wrote", png_path, os.path.getsize(png_path), "bytes")
+    _, _, bbox = m_geometry()
+    x0, y0, x1, y1 = bbox
+    print(f"wrote {svg_path}")
+    print(f"wrote {png_path} ({os.path.getsize(png_path)} bytes)")
+    print(
+        f"M bbox: x {x0:.0f}–{x1:.0f} ({x1 - x0:.0f}px, {(x1 - x0) / 512:.0%}), "
+        f"y {y0:.0f}–{y1:.0f} ({y1 - y0:.0f}px, {(y1 - y0) / 512:.0%}), "
+        f"margin L{x0:.0f}/R{512 - x1:.0f}/T{y0:.0f}/B{512 - y1:.0f}"
+    )
 
 
 if __name__ == "__main__":
